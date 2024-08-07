@@ -1,57 +1,56 @@
 package modulos.produtos;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import paginas.LoginPage;
 
 import java.time.Duration;
 
 @DisplayName("Teste Web do Modulo de Produtos")
 public class ProdutosTest {
+
+    private WebDriver navegador;
+
+    @BeforeEach //Colocar ações em comum
+    public void beforeEach(){
+        //Abrir o navegador
+        System.setProperty("webdriver.chrome.driver", "C:\\Workspace_Intellij\\LojinhaWebAutomacao\\Drivers\\chromedriver-win64\\chromedriver.exe");
+        this.navegador = new ChromeDriver();
+
+        //Vou maximizar a tela
+        this.navegador.manage().window().maximize();
+
+        //Definir tempo de espera padrão de 5 segundos
+        this.navegador.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+        //Navegar para a pagina da lojinha web
+        this.navegador.get("http://165.227.93.41/lojinha-web/v2/");
+    }
+
     @Test
     @DisplayName("Não é permitido registrar produto com valor igual a zero")
     public void testNaoEPermitidoRegistrarProdutoComValorIgualAZero(){
-
-        //Abrir o navegador
-        System.setProperty("webdriver.chrome.driver", "C:\\Workspace_Intellij\\LojinhaWebAutomacao\\Drivers\\chromedriver-win64\\chromedriver.exe");
-        WebDriver navegador = new ChromeDriver();
-
-        //Vou maximizar a tela
-        navegador.manage().window().maximize();
-
-        //Definir tempo de espera padrão de 5 segundos
-        navegador.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
-        //Navegar para a pagina da lojinha web
-        navegador.get("http://165.227.93.41/lojinha-web/v2/");
-
         //Fazer login
-        //navegador.findElement(By.cssSelector("label[for=\"usuario\"]")).click(); //usar quando não tiver o elemento id. O Click é usado caso haja necessidade de validação dessa ação.
-        navegador.findElement(By.id("usuario")).sendKeys("admin");
-
-        navegador.findElement(By.id("senha")).sendKeys("admin");
-        navegador.findElement(By.id("btn-entrar")).click();
-
-        //Vou para a tela de registro de produto
-        navegador.findElement((By.linkText("ADICIONAR PRODUTO"))).click(); //Adicione o texto conforme aparece para o usuário
-
-        //Vou preencher dados do produto e o valor será igual a zero
-        navegador.findElement(By.id("produtonome")).sendKeys("Macbook Pro");
-        navegador.findElement(By.id("produtovalor")).sendKeys("000"); //o selenium pega como texto e digita como número, quem coloca a mascara é a interface
-        navegador.findElement(By.id("produtocores")).sendKeys("Preto, Rosa");
-
-        //Vou submeter o formulário
-        navegador.findElement(By.id("btn-salvar")).click();
+        String mensagemToast = new LoginPage(navegador)
+                .informarOUsuario("admin")
+                .informarASenha("admin")
+                .submeterFormularioDeLogin()
+                .acessarFormularioDeAdicaoNovoProduto()
+                .informarNomeDoProduto("Macbook Pro")
+                .informarValorDoProduto("000")
+                .informarCorDoProduto("Preto, Rosa")
+                .submeterFormularioDeAdicaoProdutoComErro()
+                .capturarMensagemApresentada();
 
         //Vou validar que a mensagem de erro foi apresentada
-        //<div class="toast rounded" style="top: 0px; transition: transform 0.2s, opacity 0.2s; opacity: 0.000840346; margin-top: -39.958px;">O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00</div>
-        String mensagemToast = navegador.findElement(By.cssSelector(".toast.rounded")).getText();
         Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemToast);
+    }
 
+    @AfterEach
+    public void afterEach(){
         //Vou fechar o navegador
-        navegador.quit();
+        this.navegador.quit();
     }
 }
