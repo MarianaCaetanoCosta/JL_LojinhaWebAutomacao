@@ -1,0 +1,2 @@
+# LojinhaWebAutomacao
+Lojinha Web Automacao
