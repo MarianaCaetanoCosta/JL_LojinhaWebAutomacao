@@ -32,4 +32,6 @@ public class FormularioDeAdicaoDeProdutoPage {
         this.navegador.findElement(By.id("btn-salvar")).click();
         return new ListaDeProdutosPage(navegador); //retorna uma nova pagina ListaDeProdutosPage
     }
+
+    //Desafio: Validar
 }

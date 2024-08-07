@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bd1e805-433f-413d-b386-377f70274501" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/paginas/FormularioDeAdicaoDeProdutoPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/paginas/ListaDeProdutosPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/paginas/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/modulos/produtos/ProdutosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modulos/produtos/ProdutosTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/paginas/FormularioDeAdicaoDeProdutoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/paginas/FormularioDeAdicaoDeProdutoPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +26,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/test/java/modulos/produtos/ProdutosTest.java" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="JavaAutoRunManager">
+    <enabled-run-configurations>
+      <run-configuration type="JUnit" name="ProdutosTest" />
+    </enabled-run-configurations>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 8

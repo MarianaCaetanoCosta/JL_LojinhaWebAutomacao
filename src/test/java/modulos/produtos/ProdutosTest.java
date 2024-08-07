@@ -33,7 +33,7 @@ public class ProdutosTest {
     @DisplayName("Não é permitido registrar produto com valor igual a zero")
     public void testNaoEPermitidoRegistrarProdutoComValorIgualAZero(){
         //Fazer login
-        String mensagemToast = new LoginPage(navegador)
+        String mensagemApresentada = new LoginPage(navegador)
                 .informarOUsuario("admin")
                 .informarASenha("admin")
                 .submeterFormularioDeLogin()
@@ -45,7 +45,25 @@ public class ProdutosTest {
                 .capturarMensagemApresentada();
 
         //Vou validar que a mensagem de erro foi apresentada
-        Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemToast);
+        Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemApresentada);
+    }
+
+    @Test
+    @DisplayName("Não é permitido registrar produto com valor acima de 7000")
+    public void testNaoEPErmitidoRegistrarProdutoComValorAcimaQueSeteMil(){
+        String mensagemApresentada = new LoginPage(navegador)
+                .informarOUsuario("admin")
+                .informarASenha("admin")
+                .submeterFormularioDeLogin()
+                .acessarFormularioDeAdicaoNovoProduto()
+                .informarNomeDoProduto("Macbook Air")
+                .informarValorDoProduto("70001")
+                .informarCorDoProduto("Branco, Rosa")
+                .submeterFormularioDeAdicaoProdutoComErro()
+                .capturarMensagemApresentada();
+
+        //Vou validar que a mensagem de erro foi apresentada
+        Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemApresentada);
     }
 
     @AfterEach
