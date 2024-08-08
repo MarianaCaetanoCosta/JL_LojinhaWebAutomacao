@@ -1,7 +1,6 @@
 package modulos.produtos;
 
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import paginas.LoginPage;
@@ -49,15 +48,15 @@ public class ProdutosTest {
     }
 
     @Test
-    @DisplayName("Não é permitido registrar produto com valor acima de 7000")
-    public void testNaoEPErmitidoRegistrarProdutoComValorAcimaQueSeteMil(){
+    @DisplayName("Não é permitido registrar produto com valor acima de 7.000,00")
+    public void testNaoEPermitidoRegistrarProdutoComValorAcimaQueSeteMil(){
         String mensagemApresentada = new LoginPage(navegador)
                 .informarOUsuario("admin")
                 .informarASenha("admin")
                 .submeterFormularioDeLogin()
                 .acessarFormularioDeAdicaoNovoProduto()
                 .informarNomeDoProduto("Macbook Air")
-                .informarValorDoProduto("70001")
+                .informarValorDoProduto("700001")
                 .informarCorDoProduto("Branco, Rosa")
                 .submeterFormularioDeAdicaoProdutoComErro()
                 .capturarMensagemApresentada();
@@ -66,9 +65,26 @@ public class ProdutosTest {
         Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemApresentada);
     }
 
+    @Test
+    @DisplayName("Posso adicionar produtos que estejam na faixa de R$0,01 e R$7.000,00")
+    public void testPermitidoRegistrarProdutroEntreUmCentavoASeteMilReais(){
+        String mensagemApresentada = new LoginPage(navegador)
+                .informarOUsuario("admin")
+                .informarASenha("admin")
+                .submeterFormularioDeLogin()
+                .acessarFormularioDeAdicaoNovoProduto()
+                .informarNomeDoProduto("Iphone")
+                .informarValorDoProduto("400000")
+                .informarCorDoProduto("Azul, Verde")
+                .submeterFormularioDeAdicaoComSucesso()
+                .capturarMensagemApresentada();
+
+        //Vou validar que a mensagem de erro foi apresentada
+        Assertions.assertEquals("Produto adicionado com sucesso", mensagemApresentada);
+    }
+
     @AfterEach
     public void afterEach(){
-        //Vou fechar o navegador
-        this.navegador.quit();
+        this.navegador.quit(); //Vou fechar o navegador
     }
 }

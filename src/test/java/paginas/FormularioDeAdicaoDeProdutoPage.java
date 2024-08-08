@@ -33,5 +33,9 @@ public class FormularioDeAdicaoDeProdutoPage {
         return new ListaDeProdutosPage(navegador); //retorna uma nova pagina ListaDeProdutosPage
     }
 
-    //Desafio: Validar
+    //Desafio 2: produto válido
+    public FormularioDeEdicaoDeProdutoPage submeterFormularioDeAdicaoComSucesso(){
+        this.navegador.findElement(By.id("btn-salvar")).click();
+        return new FormularioDeEdicaoDeProdutoPage(navegador);
+    }
 }
