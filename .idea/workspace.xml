@@ -5,16 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bd1e805-433f-413d-b386-377f70274501" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/paginas/FormularioDeEdicaoDeProdutoPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/modulos/produtos/ProdutosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modulos/produtos/ProdutosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/paginas/FormularioDeAdicaoDeProdutoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/paginas/FormularioDeAdicaoDeProdutoPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExportTestResults" exportFormat="Xml" outputFolder="$PROJECT_DIR$" userTempatePath="" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>

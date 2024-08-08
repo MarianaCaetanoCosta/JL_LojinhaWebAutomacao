@@ -83,6 +83,42 @@ public class ProdutosTest {
         Assertions.assertEquals("Produto adicionado com sucesso", mensagemApresentada);
     }
 
+    @Test
+    @DisplayName("Posso adicionar produtos no limite de R$0,01) ")
+    public void testPermitidoRegistrarProdutroNoLimiteDeUmCentavo(){
+            String mensagemApresentada = new LoginPage(navegador)
+            .informarOUsuario("admin")
+            .informarASenha("admin")
+            .submeterFormularioDeLogin()
+            .acessarFormularioDeAdicaoNovoProduto()
+            .informarNomeDoProduto("Bala de amendoim")
+            .informarValorDoProduto("001")
+            .informarCorDoProduto("amarela")
+            .submeterFormularioDeAdicaoComSucesso()
+            .capturarMensagemApresentada();
+
+            //Vou validar que a mensagem de erro foi apresentada
+            Assertions.assertEquals("Produto adicionado com sucesso", mensagemApresentada);
+}
+
+    @Test
+    @DisplayName("Posso adicionar produtos limite de R$7.000,00")
+    public void testPermitidoRegistrarProdutroNoLimiteDeSeteMil(){
+        String mensagemApresentada = new LoginPage(navegador)
+                .informarOUsuario("admin")
+                .informarASenha("admin")
+                .submeterFormularioDeLogin()
+                .acessarFormularioDeAdicaoNovoProduto()
+                .informarNomeDoProduto("BMW")
+                .informarValorDoProduto("700000")
+                .informarCorDoProduto("Roxo")
+                .submeterFormularioDeAdicaoComSucesso()
+                .capturarMensagemApresentada();
+
+        //Vou validar que a mensagem de erro foi apresentada
+        Assertions.assertEquals("Produto adicionado com sucesso", mensagemApresentada);
+    }
+
     @AfterEach
     public void afterEach(){
         this.navegador.quit(); //Vou fechar o navegador

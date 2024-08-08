@@ -2,6 +2,10 @@
 
 Teste Web : Automação de Testes com JUnit e WebDriver
 
+O projeto tem por objetivo:
+- interagir com os elementos da tela
+- utilizando padres de designe partter
+
 1. Criação do projeto
 
 >> Intellij > New Project > Java > Maven > Sdk > Name: LojinhaWebAutomação > Local: Workspace_Intellij
