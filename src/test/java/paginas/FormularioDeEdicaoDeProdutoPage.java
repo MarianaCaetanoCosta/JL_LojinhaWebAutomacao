@@ -3,16 +3,13 @@ package paginas;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class FormularioDeEdicaoDeProdutoPage {
+public class FormularioDeEdicaoDeProdutoPage extends BasePage{
 
-    private WebDriver navegador;
-
-    public FormularioDeEdicaoDeProdutoPage (WebDriver navegador){
-        this.navegador = navegador;
+    public FormularioDeEdicaoDeProdutoPage(WebDriver navegador){
+        super(navegador);
     }
 
-    //Desafio 3
     public String capturarMensagemApresentada(){
-        return navegador.findElement(By.cssSelector(".toast.rounded")).getText();
+        return capturarRounded();
     }
 }

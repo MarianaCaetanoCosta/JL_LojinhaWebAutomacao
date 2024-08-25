@@ -3,12 +3,10 @@ package paginas;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class FormularioDeAdicaoDeProdutoPage {
-
-    private WebDriver navegador;
+public class FormularioDeAdicaoDeProdutoPage extends BasePage{
 
     public FormularioDeAdicaoDeProdutoPage(WebDriver navegador){
-        this.navegador = navegador;
+        super(navegador);
     }
 
     //Vou preencher dados do produto e o valor será igual a zero

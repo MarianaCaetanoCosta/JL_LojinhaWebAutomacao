@@ -4,13 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.bidi.log.Log;
 
-public class LoginPage {
-    //1º Tenha um atributo da classe que seja WebDriver
-    private WebDriver navegador;
+public class LoginPage extends BasePage{
 
-    //2º Tenha um Contrutor da classe que pegue o navegador de fora e o receba
     public LoginPage(WebDriver navegador){
-        this.navegador = navegador;
+        super(navegador);
     }
 
     //3º Métodos de interação com cada elemento da tela

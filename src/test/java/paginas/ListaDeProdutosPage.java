@@ -4,12 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ListaDeProdutosPage {
-
-    private WebDriver navegador;
+public class ListaDeProdutosPage extends BasePage{
 
     public ListaDeProdutosPage(WebDriver navegador){
-        this.navegador = navegador;
+        super(navegador);
     }
 
     public FormularioDeAdicaoDeProdutoPage acessarFormularioDeAdicaoNovoProduto(){
@@ -19,6 +17,6 @@ public class ListaDeProdutosPage {
     }
 
     public String capturarMensagemApresentada(){
-        return navegador.findElement(By.cssSelector(".toast.rounded")).getText();
+        return capturarRounded();
     }
 }
